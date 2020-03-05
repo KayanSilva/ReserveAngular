@@ -1,3 +1,6 @@
-<ap-photo url="https://i0.wp.com/gamelogia.com.br/wp-content/uploads/2016/11/jogos-30.jpg?fit=640%2C960&ssl=1" description="Jogar"></ap-photo>
 
-<ap-photo url="https://i.ytimg.com/vi/ef6_BS4pvxY/maxresdefault.jpg" description="Arcade"></ap-photo>
+<ap-photo
+    *ngFor="let photo of photos"
+    [url]="photo.url"
+    [description]="photo.description">
+</ap-photo>

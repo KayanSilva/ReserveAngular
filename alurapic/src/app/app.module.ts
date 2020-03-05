@@ -3,16 +3,16 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 import { AppRoutingModule } from './app-routing.module';
-import { PhotoComponent } from './photo/photo.component';
+import { PhotosModule } from './photos/photos.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PhotoComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PhotosModule
   ],
   providers: [],
   bootstrap: [AppComponent]
