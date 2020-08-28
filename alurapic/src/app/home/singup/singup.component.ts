@@ -1,40 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { lowerCaseValidator } from 'src/app/shared/validators/lower-case.validator';
+import { lowerCaseValidator } from '../../shared/validators/lower-case.validator';
 import { UserNotTakenValidatorService } from './user-not-taken.validator.service';
 import { NewUser } from './new-user';
 import { SignUpService } from './signup.service';
 import { Router } from '@angular/router';
+import { PlatformDetectorService } from '../../core/plataform-detector/platform-detector.service';
 
 @Component({
-    templateUrl: './signup.component.html'
+    templateUrl: './signup.component.html',
+    providers: [ UserNotTakenValidatorService ]
 })
 export class SignUpComponent implements OnInit {
-
+    
     signupForm: FormGroup;
-
+    @ViewChild('emailInput') emailInput: ElementRef<HTMLInputElement>;
+    
     constructor(
         private formBuilder: FormBuilder,
         private userNotTakenValidatorService: UserNotTakenValidatorService,
         private signUpService: SignUpService,
-        private router: Router) { }
+        private router: Router,
+        private platformDetectorService: PlatformDetectorService) {}
 
     ngOnInit(): void {
         this.signupForm = this.formBuilder.group({
-            email: ['',
+            email: ['', 
                 [
                     Validators.required,
                     Validators.email
                 ]
             ],
-            fullName: ['',
+            fullName: ['', 
                 [
                     Validators.required,
                     Validators.minLength(2),
                     Validators.maxLength(40)
                 ]
             ],
-            userName: ['',
+            userName: ['', 
                 [
                     Validators.required,
                     lowerCaseValidator,
@@ -43,7 +47,7 @@ export class SignUpComponent implements OnInit {
                 ],
                 this.userNotTakenValidatorService.checkUserNameTaken()
             ],
-            password: ['',
+            password: ['', 
                 [
                     Validators.required,
                     Validators.minLength(8),
@@ -51,7 +55,10 @@ export class SignUpComponent implements OnInit {
                 ]
             ]
         });
-    }
+
+        this.platformDetectorService.isPlatformBrowser() && 
+            this.emailInput.nativeElement.focus();    
+    } 
 
     signup() {
         const newUser = this.signupForm.getRawValue() as NewUser;
@@ -59,6 +66,7 @@ export class SignUpComponent implements OnInit {
             .signup(newUser)
             .subscribe(
                 () => this.router.navigate(['']),
-                err => console.log(err));
+                err => console.log(err)
+            );
     }
 }

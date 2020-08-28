@@ -12,16 +12,16 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private userService: UserService
-  ) { }
+    private userService: UserService) { }
 
   authenticate(userName: string, password: string) {
 
     return this.http
       .post(
-        API_URL + '/user/login',
-        { userName, password },
-        { observe: 'response' })
+        API_URL + '/user/login', 
+        { userName, password }, 
+        { observe: 'response'} 
+      )
       .pipe(tap(res => {
         const authToken = res.headers.get('x-access-token');
         this.userService.setToken(authToken);
