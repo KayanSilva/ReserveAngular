@@ -2,9 +2,9 @@
     (onTyping)="filter = $event" [value]="filter">
 </ap-search>
 
-<ap-photos 
+<app-photos 
     [photos]="photos | filterByDescription: filter">
-</ap-photos>
+</app-photos>
 
 <ap-load-button 
     (click)="load()" 
