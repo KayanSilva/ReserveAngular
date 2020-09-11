@@ -1,7 +1,7 @@
 import { Directive, ElementRef, HostListener, Renderer2, Input } from '@angular/core';
 
 @Directive({
-    selector: '[apDarkenOnHover]'
+    selector: '[appDarkenOnHover]'
 })
 export class DarkenOnHoverDirective {
 
