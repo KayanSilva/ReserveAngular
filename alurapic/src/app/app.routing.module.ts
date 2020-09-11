@@ -27,7 +27,7 @@ const routes: Routes = [
     {
         path: 'p/add',
         component: PhotoFormComponent,
-        canActivate: [ AuthGuard ]
+        canActivate: [AuthGuard]
     },
     {
         path: '**',
@@ -40,4 +40,3 @@ const routes: Routes = [
     exports: [RouterModule]
 })
 export class AppRoutingModule { }
-
