@@ -22,5 +22,5 @@ export class PhotoComponent {
 
     get url() {
         return this._url;
-    }s
+    }
 }
