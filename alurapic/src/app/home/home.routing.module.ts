@@ -10,15 +10,21 @@ const routes: Routes = [
     {
         path: '',
         component: HomeComponent,
-        canActivate: [ LoginGuard ],
+        canActivate: [LoginGuard],
         children: [
             {
                 path: '',
                 component: SignInComponent,
+                data: {
+                    title: 'Sign in'
+                }
             },
             {
                 path: 'signup',
                 component: SignUpComponent,
+                data: {
+                    title: 'Sign up'
+                }
             },
         ]
     },
@@ -31,4 +37,3 @@ const routes: Routes = [
     exports: [RouterModule]
 })
 export class HomeRoutingModule { }
-
