@@ -1,5 +1,4 @@
-import { Directive, ElementRef, Output } from '@angular/core';
-import * as EventEmitter from 'events';
+import { Directive, ElementRef, EventEmitter, Output } from '@angular/core';
 
 @Directive({
   selector: '[appKmItem]'

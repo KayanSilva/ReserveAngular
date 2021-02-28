@@ -23,6 +23,8 @@ import { UniqueIdService } from '../../services/unique-id/unique-id.service';
   ],
 })
 export class YesNoButtonGroupComponent implements OnInit, ControlValueAccessor {
+
+  @Input() disabled = false;
   @Input() public value = '';
   @Input() public label = '';
   @Output() public valueChange = new EventEmitter<string>();
