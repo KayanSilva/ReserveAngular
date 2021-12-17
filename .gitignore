@@ -1,7 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-/dist
+*/dist
 /tmp
 /out-tsc
 # Only exists if Bazel was run
@@ -10,7 +10,7 @@
 # dependencies
 */e2e
 */node_modules
-*/*/package-lock.json
+*/package-lock.json
 
 # profiling files
 chrome-profiler-events*.json
