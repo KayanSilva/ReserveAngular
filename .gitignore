@@ -8,6 +8,7 @@
 /bazel-out
 
 # dependencies
+*/.angular
 */e2e
 */node_modules
 */package-lock.json
